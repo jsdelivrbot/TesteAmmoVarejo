@@ -1,13 +1,13 @@
 {
   "name": "node-js-getting-started",
-  "version": "0.3.0",
-  "description": "A sample Node.js app using Express 4",
+  "description": "a really cool app",
+  "version": "1.0.0",
   "engines": {
-    "node": "8.9.1"
+    "node": "8.9.4"
   },
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
-    "start": "node index.js",
+    "start": "node server.js",
     "test": "node test.js"
   },
   "dependencies": {
