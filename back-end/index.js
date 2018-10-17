@@ -1,19 +1,12 @@
-/*const express = require('express')
-const path = require('path')
-const PORT = process.env.PORT || 5000
-
-express()
-  .use(express.static(path.join(__dirname, 'public')))
-  .set('views', path.join(__dirname, 'views'))
-  .set('view engine', 'ejs')
-  .get('/', (req, res) => res.render('pages/index'))
-  .listen(PORT, () => console.log(`Listening on ${ PORT }`)) */
-
 const express       = require('express');
 const bodyParser    = require('body-parser');
+const request       = require('request');
 
 const app = express();
 const port = process.env.PORT;
+
+const url = 'https://api.mlab.com/api/1/databases/ammovarejoteste/collections/produtos?apiKey=';
+const apiKey = "9CVUaoNlSBZ6DyouoDU9scYkNCOB8LSg";
 
 app.use(bodyParser.urlencoded({
     extended: true
@@ -21,196 +14,17 @@ app.use(bodyParser.urlencoded({
 
 app.get('/ammovarejo/produtos', (req, res) => {
     res.setHeader('Access-Control-Allow-Origin', '*');
+    let products = [];
 
-    let produtos = [
-        { 
-          nome: 'Cama de Casal',
-          preco: 2000.0,
-          imagem: ''
-        },
-        {
-          nome: 'Colchão Solteiro',
-          preco: 2000.0,
-          imagem: ''
-        },
-        {
-          nome: 'Armario',
-          preco: 2000.0,
-          imagem: ''
-        },
-        {
-          nome: 'Criado Mudo',
-          preco: 2000.0,
-          imagem: ''
-        },
-        {
-          nome: 'Colchão Solteiro',
-          preco: 2000.0,
-          imagem: ''
-        },
-        {
-          nome: 'Armario',
-          preco: 2000.0,
-          imagem: ''
-        },
-        {
-          nome: 'Criado Mudo',
-          preco: 2000.0,
-          imagem: ''
-        },
-        {
-          nome: 'Colchão Solteiro',
-          preco: 2000.0,
-          imagem: ''
-        },
-        {
-          nome: 'Armario',
-          preco: 2000.0,
-          imagem: ''
-        },
-        {
-          nome: 'Criado Mudo',
-          preco: 2000.0,
-          imagem: ''
-        },
-        {
-          nome: 'Colchão Solteiro',
-          preco: 2000.0,
-          imagem: ''
-        },
-        {
-          nome: 'Armario',
-          preco: 2000.0,
-          imagem: ''
-        },
-        {
-          nome: 'Criado Mudo',
-          preco: 2000.0,
-          imagem: ''
-        },
-        {
-          nome: 'Armario',
-          preco: 2000.0,
-          imagem: ''
-        },
-        {
-          nome: 'Criado Mudo',
-          preco: 2000.0,
-          imagem: ''
-        },
-        {
-          nome: 'Colchão Solteiro',
-          preco: 2000.0,
-          imagem: ''
-        },
-        {
-          nome: 'Armario',
-          preco: 2000.0,
-          imagem: ''
-        },
-        {
-          nome: 'Armario',
-          preco: 2000.0,
-          imagem: ''
-        },
-        {
-          nome: 'Criado Mudo',
-          preco: 2000.0,
-          imagem: ''
-        },
-        {
-          nome: 'Colchão Solteiro',
-          preco: 2000.0,
-          imagem: ''
-        },
-        {
-          nome: 'Armario',
-          preco: 2000.0,
-          imagem: ''
-        },
-        {
-          nome: 'Armario',
-          preco: 2000.0,
-          imagem: ''
-        },
-        {
-          nome: 'Criado Mudo',
-          preco: 2000.0,
-          imagem: ''
-        },
-        {
-          nome: 'Colchão Solteiro',
-          preco: 2000.0,
-          imagem: ''
-        },
-        {
-          nome: 'Armario',
-          preco: 2000.0,
-          imagem: ''
-        },
-        {
-          nome: 'Armario',
-          preco: 2000.0,
-          imagem: ''
-        },
-        {
-          nome: 'Criado Mudo',
-          preco: 2000.0,
-          imagem: ''
-        },
-        {
-          nome: 'Colchão Solteiro',
-          preco: 2000.0,
-          imagem: ''
-        },
-        {
-          nome: 'Armario',
-          preco: 2000.0,
-          imagem: ''
-        },
-        {
-          nome: 'Armario',
-          preco: 2000.0,
-          imagem: ''
-        },
-        {
-          nome: 'Criado Mudo',
-          preco: 2000.0,
-          imagem: ''
-        },
-        {
-          nome: 'Colchão Solteiro',
-          preco: 2000.0,
-          imagem: ''
-        },
-        {
-          nome: 'Armario',
-          preco: 2000.0,
-          imagem: ''
-        },
-        {
-          nome: 'Armario',
-          preco: 2000.0,
-          imagem: ''
-        },
-        {
-          nome: 'Criado Mudo',
-          preco: 2000.0,
-          imagem: ''
-        },
-        {
-          nome: 'Colchão Solteiro',
-          preco: 2000.0,
-          imagem: ''
-        },
-        {
-          nome: 'Armario',
-          preco: 2000.0,
-          imagem: ''
-        }
-      ];
-    
-    res.json(produtos); 
+    request(url+apiKey, function (error, response, body) {
+      if (!error && response.statusCode == 200) {
+        products = body;          
+        res.json(products); 
+      } else {
+        console.log(error);
+        res.json(error);
+      }
+    });
 });
 
 app.listen(port, () =>{
