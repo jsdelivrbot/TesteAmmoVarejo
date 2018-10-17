@@ -28,7 +28,7 @@ export class ProdutoComponent implements OnInit {
   ngOnInit() {
     this.http.get(this._url).subscribe(
       data => {
-        this.produtos = <Iproduto[]>data;
+        this.produtos = <Iproduto[]> JSON.parse(data.toString());
         this.produtosPesquisados = this.produtos;
     });
   }
