@@ -1,27 +1,34 @@
-# FrontEnd
+**** AMMO_VAREJO ***
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.2.5.
+Teste AmmoVarejo;
 
-## Development server
+1. A Aplicação
+    FrontEnd: utilizando Angular + Typescript + NodeJS & Express
+    BackEnd: NodeJS & Express
+    Database: MongoLab Database as a Service
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+2. Como Buildar?
+    2.1 BackEnd
+        2.1.1 - Abrir o CMD
+        2.1.2 - Executar o comando 'cd back-end'
+        2.1.3 - Executar NodeJS
+        2.1.4 - Acessar a URL http://localhost:3000/ammovarejo/produtos
 
-## Code scaffolding
+    2.2 FrontEnd
+        2.2.1 - Abrir o CMD
+        2.2.2 - Executar o comando 'cd back-end'
+        2.2.3 - Executar o comando 'ng build --prod'
+        2.2.4 - Executar o comando 'node server.js'
+        2.2.5 - Acessar a URL http://localhost:8080/
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+    2.3 A Base de Dados
+        As base de Dados é o MongoDB, que é acessado pelo serviço do MongoLab.
 
-## Build
+3. Links de Produção
+    A aplicação está rodando no Heroku.
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+    3.1 Front-End
+        https://stormy-everglades-21287.herokuapp.com/
 
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+    3.2 Back-End
+        https://enigmatic-castle-62130.herokuapp.com/ammovarejo/produtos
